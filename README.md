@@ -1,6 +1,6 @@
 # Dark Souls III - Save Backup Tool
 
-Automated save backup tool for Dark Souls III utilizing rolling backups, meaning if set to five, on the sixth save the first save is removed.
+Automated save backup tool for Dark Souls III utilizing rolling backups.
 
 ## Configuration
 This tool requires the configuration file *config.properties* located in the same directory as the executable, containing the following information:
