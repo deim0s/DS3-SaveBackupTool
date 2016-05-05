@@ -30,6 +30,13 @@ delay=5
 last_backup=0
 ```
 
+## Compiling
+```sh
+cd src
+javac save/RollingBackup.java
+jar cvfe DarkSoulsIII.jar RollingBackup save/*.class
+```
+
 ## Running
 ```sh
 java -cp DarkSoulsIII.jar save.RollingBackup
