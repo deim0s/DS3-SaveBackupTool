@@ -25,7 +25,7 @@ max_saves=10
 delay=5
 
 # DO NOT CHANGE
-# Tell the program the last backup that was created
+# Tells the program the last backup that was created
 # If last_backup=6 then AAA_006.zzz was the most recent backup
 last_backup=0
 ```
