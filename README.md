@@ -1,6 +1,7 @@
 # Dark Souls III - Save Backup Tool
 
-Automated save backup tool for Dark Souls III utilizing rolling backups.
+Automated save backup tool for Dark Souls III utilizing rolling backups.  
+Based on [EntityZero backup tool](http://www.nexusmods.com/darksouls2/mods/26) with some changes and customizations.
 
 ## Configuration
 This tool requires the configuration file *config.properties* located in the same directory as the executable, containing the following information:
