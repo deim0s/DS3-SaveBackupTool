@@ -1,6 +1,7 @@
 # Dark Souls III - Save Backup Tool
 
-Automated save backup tool for Dark Souls III utilizing rolling backups, meaning if set to five, on the sixth save the first save is removed.
+Automated save backup tool for Dark Souls III utilizing rolling backups.  
+Based on [EntityZero backup tool](http://www.nexusmods.com/darksouls2/mods/26) with some changes and customizations.
 
 ## Configuration
 This tool requires the configuration file *config.properties* located in the same directory as the executable, containing the following information:
@@ -30,6 +31,13 @@ delay=10
 # Tells the program the last backup that was created
 # If last_backup=6 then AAA_006.zzz was the most recent backup
 last_backup=1
+```
+
+## Compiling
+```sh
+cd src
+javac save/RollingBackup.java
+jar cvfe DarkSoulsIII.jar RollingBackup save/*.class
 ```
 
 ## Running
