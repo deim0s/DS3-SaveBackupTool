@@ -33,11 +33,11 @@ public class RollingBackup {
             properties.load(in);
             source      = Paths.get(properties.getProperty("save_file"));
             destination = Paths.get(properties.getProperty("backup_path"));
-            prefix     = properties.getProperty("backup_prefix");
-            extension   = properties.getProperty("backup_extension");
-            mIteration  = Integer.parseInt(properties.getProperty("max_saves"));
-            cIteration  = Integer.parseInt(properties.getProperty("last_backup"));
-            delay       = Integer.parseInt(properties.getProperty("delay"));
+            prefix     = properties.getProperty("backup_prefix", "DS30000");
+            extension   = properties.getProperty("backup_extension", ".sl2");
+            mIteration  = Integer.parseInt(properties.getProperty("max_saves", "10"));
+            cIteration  = Integer.parseInt(properties.getProperty("last_backup", "1"));
+            delay       = Integer.parseInt(properties.getProperty("delay", "10"));
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);
@@ -56,10 +56,10 @@ public class RollingBackup {
         
         System.out.printf("Resuming from last backup [%d]...\n", cIteration++);
         while(true) {
-            if(cIteration >= mIteration)
-                cIteration = 0;
+            if(cIteration > mIteration || cIteration < 1)
+                cIteration = 1;
             
-            String backup = prefix + "_" + String.format("%0" + ((int)Math.log10(mIteration) + 1) + "d.", cIteration) + extension;
+            String backup = prefix + "_" + String.format("%0" + ((int)Math.log10(mIteration) + 1) + "d", cIteration) + extension;
             String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
             Files.copy(source, destination.resolve(backup), StandardCopyOption.REPLACE_EXISTING);
             System.out.printf("Backing up to %s at %s...\n", backup, timeStamp);
